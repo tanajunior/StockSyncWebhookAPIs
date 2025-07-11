@@ -21,8 +21,11 @@ Check it out and let me know your thoughts! What real-time features are you most
 
 ## Real-time Inventory Management PWA: Demonstrating API & Webhook Synergy
 
-![StockSync Pro by Junior Screenshot](./images/screenshot.png)  
-*(**Important:** Replace `./images/screenshot.png` with the actual path to your screenshot once you upload it to your GitHub repository.)*
+![StockSync Pro by Junior ](https://github.com/tanajunior/StockSyncWebhookAPIs/blob/116f63ffcaef243a247dec04bc312a4dd021e236/10.png)  
+![StockSync Pro by Junior ](https://github.com/tanajunior/StockSyncWebhookAPIs/blob/116f63ffcaef243a247dec04bc312a4dd021e236/20.png)  
+![StockSync Pro by Junior ](https://github.com/tanajunior/StockSyncWebhookAPIs/blob/116f63ffcaef243a247dec04bc312a4dd021e236/30.png)  
+![StockSync Pro by Junior ](https://github.com/tanajunior/StockSyncWebhookAPIs/blob/116f63ffcaef243a247dec04bc312a4dd021e236/40.png)  
+![StockSync Pro by Junior ](https://github.com/tanajunior/StockSyncWebhookAPIs/blob/116f63ffcaef243a247dec04bc312a4dd021e236/50.png)  
 
 ---
 
@@ -40,13 +43,10 @@ Check it out and let me know your thoughts! What real-time features are you most
   - [Running the App Locally](#running-the-app-locally)
 - [Deployment (Firebase Hosting)](#deployment-firebase-hosting)
   - [Firebase CLI Installation](#firebase-cli-installation)
-  - [Firebase CLI Login](#firebase-cli-login)
   - [Initialize Firebase Hosting](#initialize-firebase-hosting)
   - [Build for Production](#build-for-production)
-  - [Deploy to Firebase Hosting](#deploy-to-firebase-hosting)
 - [Usage](#usage)
 - [Future Enhancements](#future-enhancements)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ---
@@ -266,10 +266,22 @@ Visit the "Hosting URL" shown in the terminal.
 - ✅ Real Webhook Endpoints using Firebase Functions
 - ✅ Offline Support using Service Workers
 - ✅ Push Notifications for alerts
-- ✅ Charts & Analytics
 - ✅ Filter/Search functionality
 
 ---
+
+### Email Alerts (Future Enhancement)
+
+To implement real-time email notifications for critical events (e.g., a new customer order or a low stock alert), the application can be extended with a server-side component using **Firebase Cloud Functions**.
+
+The process would involve:
+
+1.  **Firestore Trigger:** A Firebase Cloud Function would be configured to "listen" for specific events in the Firestore database (e.g., a new document being created in an `orders` collection, or a product's `stock` field being updated below its `minStockThreshold`).
+2.  **Cloud Function Execution:** When the specified Firestore event occurs, the Cloud Function automatically executes.
+3.  **Email Service Integration:** Inside the Cloud Function's code, a third-party email sending service (like SendGrid or Nodemailer) would be utilized. The function would extract relevant data from the Firestore document (e.g., order details, product name, customer email).
+4.  **Email Dispatch:** The Cloud Function would then use the integrated email service's API to compose and send an email to a designated recipient (e.g., the inventory manager or the customer).
+
+This setup allows for robust, automated and  real-time email communication triggered directly by application data changes, without requiring the frontend to handle the email sending logic. Lets say a similar To AWS SNS but for different architectural setups.
 
 
 ---
